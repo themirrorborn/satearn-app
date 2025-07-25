@@ -1,0 +1,72 @@
+# mission_templates.yaml
+# Standardized SatEarn mission structure
+
+- id: make_bed
+  title: "Make Your Bed"
+  description: "Child makes their bed each morning for 5 consecutive days."
+  type: recurring
+  frequency: daily
+  duration_days: 5
+  reward_sats: 1000
+  verify:
+    method: manual_approval
+    proof_type: checkin
+  audience: personal
+  tags: [morning_routine, responsibility, habit]
+  reflection_prompt: "How does it feel to start your day by completing something?"
+
+- id: brush_teeth
+  title: "Brush Teeth"
+  description: "Complete nightly brushing without being reminded."
+  type: recurring
+  frequency: daily
+  duration_days: 7
+  reward_sats: 1200
+  verify:
+    method: nostr_reply
+    proof_type: note
+  audience: personal
+  tags: [health, consistency]
+  badge_on_complete: "Streak Champ"
+
+- id: lightning_basics
+  title: "Learn Lightning Basics"
+  description: "Complete the 'Intro to Lightning' module and make a test transaction."
+  type: one_time
+  steps:
+    - Watch 2-minute explainer
+    - Write down seed phrase with guardian
+    - Send 1 sat to a test node
+  reward_sats: 2500
+  verify:
+    method: hybrid
+    proof_type: completed_steps + parent_confirmation
+  audience: family
+  tags: [sovereignty, education, bitcoin]
+  reflection_prompt: "What surprised you about Lightning? What was hard?"
+
+- id: helper_spirit
+  title: "Acts of Kindness"
+  description: "Child performs a kind or helpful act without being asked."
+  type: spontaneous
+  trigger: parent
+  reward_sats: 500
+  verify:
+    method: parent_observation
+    proof_type: manual_log
+  audience: household
+  tags: [empathy, generosity]
+  badge_on_complete: "Helper Spirit"
+
+- id: node_runner_jr
+  title: "Run a Nostr Relay or Lightning Node"
+  description: "With adult support, set up a Nostr relay or Lightning node for 24 hours."
+  type: tech_challenge
+  duration_hours: 24
+  reward_sats: 5000
+  verify:
+    method: uptime_check
+    proof_type: nostr_event + system_ping
+  audience: advanced
+  tags: [tech, sovereignty, internet_infrastructure]
+  badge_on_complete: "Mini Node Runner"
